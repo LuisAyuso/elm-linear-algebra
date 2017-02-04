@@ -115,7 +115,10 @@ Elm.Native.Math.Vector2.make = function(elm) {
         var r = new MJS_FLOAT_ARRAY_TYPE(2);
         r[0] = a[0] - b[0];
         r[1] = a[1] - b[1];
-        var im = 1.0 / V2.length(r);
+        var len = V2.length(r);
+        if (len < 1.0)
+            return r;
+        var im = 1.0 / len;
         r[0] = r[0] * im;
         r[1] = r[1] * im;
         return r;
@@ -143,7 +146,10 @@ Elm.Native.Math.Vector2.make = function(elm) {
 
     V2.normalize = function V2_normalize(a) {
         var r = new MJS_FLOAT_ARRAY_TYPE(2);
-        var im = 1.0 / V2.length(a);
+        var len = V2.length(r);
+        if (len < 1.0)
+            return r;
+        var im = 1.0 / len;
         r[0] = a[0] * im;
         r[1] = a[1] * im;
         return r;
